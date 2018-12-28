@@ -8,8 +8,19 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+#include "Test/Student.hpp"
+#include "SequenceList/SequenceListByArray.hpp"
+using namespace std;
+
+int main()
+{
+    SequenceListByArray<Student> *studentListMgr = new SequenceListByArray<Student>();
+    Student *stu1 = new Student("zhangshu", "571", 123);
+    studentListMgr->insert(*stu1, 0);
+    Student *stu2 = new Student();
+    studentListMgr->get(0, *stu2);
+    studentListMgr->remove(0);
+    cout << studentListMgr->getCount();
+    
     return 0;
 }
