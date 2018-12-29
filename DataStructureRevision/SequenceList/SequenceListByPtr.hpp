@@ -21,6 +21,9 @@ public:
     /** 初始化 */
     SequenceListByPtr();
     
+    /** 析构函数 */
+    ~SequenceListByPtr();
+    
     /**
      插入
      
@@ -47,11 +50,11 @@ public:
     /**
      定位
      
-     @param value 要定位的值
+     @param key 要定位的值
      @param compare 比较函数，如果两参数相等则返回true
      @param index 传出定位的下标，从0开始
      */
-    bool locate(T value, bool (*compare)(T, T), int& index);
+    bool locate(T key, bool (*compare)(T, T), int& index);
     
     int getCount();
 };
@@ -59,7 +62,14 @@ public:
 template <typename T>
 SequenceListByPtr<T>::SequenceListByPtr()
 {
-    this->sequenceList = (T*)malloc(sizeof(T) * this->MAX_LIST_LENGTH);
+    this->sequenceList = new T[MAX_LIST_LENGTH];
+    this->count = 0;
+}
+
+template <typename T>
+SequenceListByPtr<T>::~SequenceListByPtr()
+{
+    delete this->sequenceList;
     this->count = 0;
 }
 
@@ -100,11 +110,11 @@ bool SequenceListByPtr<T>::get(int index, T &value)
 }
 
 template <typename T>
-bool SequenceListByPtr<T>::locate(T value, bool compare(T, T), int &index)
+bool SequenceListByPtr<T>::locate(T key, bool compare(T, T), int &index)
 {
     for (int i = 0; i < this->count; i++)
     {
-        if (compare(value, *(this->sequenceList + i)))
+        if (compare(key, *(this->sequenceList + i)))
         {
             index = i;
             return true;

@@ -46,11 +46,11 @@ public:
     /**
      定位
 
-     @param value 要定位的值
+     @param key 要定位的值
      @param compare 比较函数，如果两参数相等则返回true
      @param index 传出定位的下标，从0开始
      */
-    bool locate(T value, bool (*compare)(T, T), int& index);
+    bool locate(T key, bool (*compare)(T, T), int& index);
     
     int getCount();
 };
@@ -98,11 +98,11 @@ bool SequenceListByArray<T>::get(int index, T &value)
 }
 
 template <typename T>
-bool SequenceListByArray<T>::locate(T value, bool compare(T, T), int &index)
+bool SequenceListByArray<T>::locate(T key, bool compare(T, T), int &index)
 {
     for (int i = 0; i < this->count; i++)
     {
-        if (compare(value, this->sequenceList[i]))
+        if (compare(key, this->sequenceList[i]))
         {
             index = i;
             return true;
