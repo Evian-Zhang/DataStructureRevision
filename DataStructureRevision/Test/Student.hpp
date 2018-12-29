@@ -10,9 +10,11 @@
 #define Student_hpp
 
 #include <string.h>
+#include <iostream>
 
 class Student
 {
+    friend std::ostream& operator<<(std::ostream& output, const Student& student);
 public:
     char name[16];
     char id[16];

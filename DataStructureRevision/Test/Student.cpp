@@ -20,9 +20,15 @@ Student::Student(char* name, char* id, short score)
     this->score = score;
 }
 
+std::ostream& operator<<(std::ostream& output, const Student& student)
+{
+    output << student.name;
+    return output;
+}
+
 bool Student::compare(Student student1, Student student2)
 {
-    return student1.score == student2.score;
+    return !strcmp(student1.name, student2.name);
 }
 
 Student& Student::operator=(Student& student)

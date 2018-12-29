@@ -9,6 +9,8 @@
 #ifndef BiLinkedList_hpp
 #define BiLinkedList_hpp
 
+#include <iostream>
+
 template <typename T>
 class BiLinkedList
 {
@@ -16,14 +18,13 @@ class BiLinkedList
     {
     public:
         T value;
-        T* preNode;
-        T* nextNode;
+        BiLinkedListNode* preNode;
+        BiLinkedListNode* nextNode;
         
         BiLinkedListNode()
         {
-            this->value = NULL;
-            this->head = NULL;
-            this->tail = NULL;
+            this->preNode = NULL;
+            this->nextNode = NULL;
         }
     };
     
@@ -36,6 +37,12 @@ public:
     
     /** 析构函数 */
     ~BiLinkedList();
+    
+    /**
+     @brief 打印链表
+     @discussion 打印链表头、尾及连接关系。需要对类T重载<<算符
+     */
+    void display();
     
     /**
      从头插入
@@ -106,11 +113,35 @@ BiLinkedList<T>::~BiLinkedList()
 }
 
 template <typename T>
+void BiLinkedList<T>::display()
+{
+    if (this->head != NULL)
+        std::cout << "head: " << this->head->value << std::endl;
+    else
+        std::cout << "head: NULL" << std::endl;
+    if (this->tail != NULL)
+        std::cout << "tail: " << this->tail->value << std::endl;
+    else
+        std::cout << "tail: NULL" << std::endl;
+    BiLinkedListNode* tmpNode = this->head;
+    while (tmpNode != NULL)
+    {
+        std::cout << tmpNode->value << " ";
+        tmpNode = tmpNode->nextNode;
+        if (tmpNode != NULL)
+            std::cout << "-> ";
+    }
+    std::cout << std::endl;
+}
+
+template <typename T>
 bool BiLinkedList<T>::insertInHead(T value)
 {
     BiLinkedListNode* insertedNode = new BiLinkedListNode();
     insertedNode->value = value;
     insertedNode->nextNode = this->head;
+    if (this->head != NULL)
+        this->head->preNode = insertedNode;
     this->head = insertedNode;
     if (this->tail == NULL)
         this->tail = insertedNode;
@@ -124,6 +155,8 @@ bool BiLinkedList<T>::insertInTail(T value)
     BiLinkedListNode* insertedNode = new BiLinkedListNode();
     insertedNode->value = value;
     insertedNode->preNode = this->tail;
+    if (this->tail != NULL)
+        this->tail->nextNode = insertedNode;
     this->tail = insertedNode;
     if (this->head == NULL)
         this->head = insertedNode;
@@ -169,16 +202,22 @@ bool BiLinkedList<T>::removeByIndex(int index)
     BiLinkedListNode* tmpNode = this->head;
     for (int i = 0; i < index; i++)
     {
-        tmpNode = tmpNode->next;
+        tmpNode = tmpNode->nextNode;
     }
-    if (index == 0)
-        this->head = tmpNode->nextNode;
-    if (index == count)
-        this->tail = tmpNode->preNode;
-    if (index != 0 && index != count)
+    if (index != 0 && index != this->count - 1)
     {
         tmpNode->preNode->nextNode = tmpNode->nextNode;
         tmpNode->nextNode->preNode = tmpNode->preNode;
+    }
+    if (index == 0)
+    {
+        this->head = tmpNode->nextNode;
+        this->head->preNode = NULL;
+    }
+    if (index == this->count - 1)
+    {
+        this->tail = tmpNode->preNode;
+        this->tail->nextNode = NULL;
     }
     delete tmpNode;
     this->count--;
@@ -193,17 +232,24 @@ bool BiLinkedList<T>::removeByKey(T key, bool (*compare)(T, T))
     {
         if (compare(tmpNode->value, key))
             break;
+        tmpNode = tmpNode->nextNode;
     }
     if (tmpNode == NULL)
         return false;
-    if (this->head == tmpNode)
-        this->head = tmpNode->nextNode;
-    if (this->tail == tmpNode)
-        this->tail = tmpNode->preNode;
     if (this->head != tmpNode && this->tail != tmpNode)
     {
         tmpNode->preNode->nextNode = tmpNode->nextNode;
         tmpNode->nextNode->preNode = tmpNode->preNode;
+    }
+    if (this->head == tmpNode)
+    {
+        this->head = tmpNode->nextNode;
+        this->head->preNode = NULL;
+    }
+    if (this->tail == tmpNode)
+    {
+        this->tail = tmpNode->preNode;
+        this->tail->nextNode = NULL;
     }
     delete tmpNode;
     this->count--;

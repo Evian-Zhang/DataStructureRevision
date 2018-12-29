@@ -9,6 +9,8 @@
 #ifndef UniLinkedList_hpp
 #define UniLinkedList_hpp
 
+#include <iostream>
+
 template <typename T>
 class UniLinkedList
 {
@@ -16,11 +18,10 @@ class UniLinkedList
     {
     public:
         T value;
-        T* nextNode;
+        UniLinkedListNode* nextNode;
         
         UniLinkedListNode()
         {
-            this->value = NULL;
             this->nextNode = NULL;
         }
     };
@@ -33,6 +34,12 @@ public:
     
     /** 析构函数 */
     ~UniLinkedList();
+    
+    /**
+     @brief 打印链表
+     @discussion 打印链表头及连接关系。需要对类T重载<<算符
+     */
+    void display();
     
     /**
      插入
@@ -92,6 +99,24 @@ UniLinkedList<T>::~UniLinkedList()
         delete tmpPreNode;
         this->count--;
     }
+}
+
+template <typename T>
+void UniLinkedList<T>::display()
+{
+    if (this->head != NULL)
+        std::cout << "head: " << this->head->value << std::endl;
+    else
+        std::cout << "head: NULL" << std::endl;
+    UniLinkedListNode* tmpNode = this->head;
+    while (tmpNode != NULL)
+    {
+        std::cout << tmpNode->value << " ";
+        tmpNode = tmpNode->nextNode;
+        if (tmpNode != NULL)
+            std::cout << "-> ";
+    }
+    std::cout << std::endl;
 }
 
 template <typename T>

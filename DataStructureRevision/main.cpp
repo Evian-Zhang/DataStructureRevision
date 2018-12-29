@@ -17,11 +17,15 @@ using namespace std;
 
 int main()
 {
-    SequenceListByArray<Student> *studentListMgr = new SequenceListByArray<Student>();
     Student *stu1 = new Student("zhangshu", "571", 123);
-    studentListMgr->insert(*stu1, 0);
-    int index;
-    studentListMgr->locate(*stu1, Student::compare, index);
-    cout << index << endl;
+    BiLinkedList<Student> *studentListMgr = new BiLinkedList<Student>();
+    studentListMgr->display();
+    studentListMgr->insertInHead(*stu1);
+    studentListMgr->display();
+    Student *stu2 = new Student("zs", "5132", 123);
+    studentListMgr->insertInHead(*stu2);
+    studentListMgr->display();
+    studentListMgr->removeByKey(*stu2, Student::compare);
+    studentListMgr->display();
     return 0;
 }
