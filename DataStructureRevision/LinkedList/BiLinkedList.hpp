@@ -172,7 +172,7 @@ bool BiLinkedList<T>::get(int index, T &value)
     BiLinkedListNode* tmpNode = this->head;
     for (int i = 0; i < index; i++)
     {
-        tmpNode = tmpNode->next;
+        tmpNode = tmpNode->nextNode;
     }
     value = tmpNode->value;
     return true;

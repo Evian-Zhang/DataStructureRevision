@@ -14,21 +14,23 @@
 #include "LinkedList/UniLinkedList.hpp"
 #include "LinkedList/BiLinkedList.hpp"
 #include "Stack/Stack.hpp"
+#include "Queue/Queue.hpp"
+#include "Queue/CircularQueue.hpp"
 using namespace std;
 
 int main()
 {
-    Stack<Student> *stack = new Stack<Student>;
-    stack->display();
+    Queue<Student>* queue = new Queue<Student>;
+    queue->display();
     Student *stu1 = new Student("zhangshu", "571", 123);
-    stack->push(*stu1);
-    stack->display();
-    Student *stu2 = new Student("zs", "570", 122);
-    stack->push(*stu2);
-    stack->display();
-    Student *stu = new Student();
-    stack->pop(*stu);
-    cout << *stu << endl;
-    stack->display();
+    queue->enQueue(*stu1);
+    queue->display();
+    Student *stu2 = new Student("zs", "570", 212);
+    queue->enQueue(*stu2);
+    queue->display();
+    Student *stu3 = new Student();
+    queue->deQueue(*stu3);
+    cout << *stu3 << endl;
+    queue->display();
     return 0;
 }

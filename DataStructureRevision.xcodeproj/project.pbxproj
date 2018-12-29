@@ -34,6 +34,8 @@
 		56C5AB3721D687C9003B429A /* SequenceListByPtr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SequenceListByPtr.hpp; sourceTree = "<group>"; };
 		56C5AB3921D6973F003B429A /* Student.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Student.cpp; sourceTree = "<group>"; };
 		56C5AB3A21D6973F003B429A /* Student.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Student.hpp; sourceTree = "<group>"; };
+		56E64EBE21D79B7A0000D175 /* CircularQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircularQueue.hpp; sourceTree = "<group>"; };
+		56E64EC121D7A8930000D175 /* Queue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				56C5AB3221D681B5003B429A /* SequenceList */,
 				567AF1B321D72D9800F35506 /* LinkedList */,
 				56B0B2A421D780CD00B3A950 /* Stack */,
+				56E64EBC21D79B5B0000D175 /* Queue */,
 				56C5AB3C21D69752003B429A /* Test */,
 				56C5AB1821D67C0F003B429A /* main.cpp */,
 			);
@@ -109,6 +112,15 @@
 				56C5AB3921D6973F003B429A /* Student.cpp */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		56E64EBC21D79B5B0000D175 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				56E64EC121D7A8930000D175 /* Queue.hpp */,
+				56E64EBE21D79B7A0000D175 /* CircularQueue.hpp */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
