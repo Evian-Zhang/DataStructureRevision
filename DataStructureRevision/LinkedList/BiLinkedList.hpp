@@ -167,16 +167,19 @@ bool BiLinkedList<T>::removeByIndex(int index)
     if (this->count == 0 || index >= this->count)
         return false;
     BiLinkedListNode* tmpNode = this->head;
-    BiLinkedListNode* tmpPreNode = tmpNode;
     for (int i = 0; i < index; i++)
     {
         tmpNode = tmpNode->next;
-        tmpPreNode = tmpNode;
     }
-    if (tmpPreNode == tmpNode)
+    if (index == 0)
         this->head = tmpNode->nextNode;
-    else
-        tmpPreNode->nextNode = tmpNode->nextNode;
+    if (index == count)
+        this->tail = tmpNode->preNode;
+    if (index != 0 && index != count)
+    {
+        tmpNode->preNode->nextNode = tmpNode->nextNode;
+        tmpNode->nextNode->preNode = tmpNode->preNode;
+    }
     delete tmpNode;
     this->count--;
     return true;
@@ -186,19 +189,22 @@ template <typename T>
 bool BiLinkedList<T>::removeByKey(T key, bool (*compare)(T, T))
 {
     BiLinkedListNode* tmpNode = this->head;
-    BiLinkedListNode* tmpPreNode = tmpNode;
     while (tmpNode != NULL)
     {
         if (compare(tmpNode->value, key))
             break;
-        tmpPreNode = tmpNode;
     }
     if (tmpNode == NULL)
         return false;
-    if (tmpPreNode == tmpNode)
+    if (this->head == tmpNode)
         this->head = tmpNode->nextNode;
-    else
-        tmpPreNode->nextNode = tmpNode->nextNode;
+    if (this->tail == tmpNode)
+        this->tail = tmpNode->preNode;
+    if (this->head != tmpNode && this->tail != tmpNode)
+    {
+        tmpNode->preNode->nextNode = tmpNode->nextNode;
+        tmpNode->nextNode->preNode = tmpNode->preNode;
+    }
     delete tmpNode;
     this->count--;
     return true;
