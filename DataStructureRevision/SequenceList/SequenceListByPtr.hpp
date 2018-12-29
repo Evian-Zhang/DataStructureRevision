@@ -25,6 +25,12 @@ public:
     ~SequenceListByPtr();
     
     /**
+     @brief 打印顺序表
+     @discussion 打印顺序表。需要对类T重载<<算符
+     */
+    void display();
+    
+    /**
      插入
      
      @param value 插入的元素
@@ -71,6 +77,21 @@ SequenceListByPtr<T>::~SequenceListByPtr()
 {
     delete this->sequenceList;
     this->count = 0;
+}
+
+template <typename T>
+void SequenceListByPtr<T>::display()
+{
+    if (this->count == 0)
+        std::cout << "NULL" << std::endl;
+    else
+    {
+        for (int i = 0; i < this->count - 1; i++)
+        {
+            std::cout << *(this->sequenceList + i) << ", ";
+        }
+        std::cout << *(this->sequenceList + this->count) << std::endl;
+    }
 }
 
 template <typename T>

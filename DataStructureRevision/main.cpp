@@ -13,19 +13,22 @@
 #include "SequenceList/SequenceListByPtr.hpp"
 #include "LinkedList/UniLinkedList.hpp"
 #include "LinkedList/BiLinkedList.hpp"
+#include "Stack/Stack.hpp"
 using namespace std;
 
 int main()
 {
+    Stack<Student> *stack = new Stack<Student>;
+    stack->display();
     Student *stu1 = new Student("zhangshu", "571", 123);
-    BiLinkedList<Student> *studentListMgr = new BiLinkedList<Student>();
-    studentListMgr->display();
-    studentListMgr->insertInHead(*stu1);
-    studentListMgr->display();
-    Student *stu2 = new Student("zs", "5132", 123);
-    studentListMgr->insertInHead(*stu2);
-    studentListMgr->display();
-    studentListMgr->removeByKey(*stu2, Student::compare);
-    studentListMgr->display();
+    stack->push(*stu1);
+    stack->display();
+    Student *stu2 = new Student("zs", "570", 122);
+    stack->push(*stu2);
+    stack->display();
+    Student *stu = new Student();
+    stack->pop(*stu);
+    cout << *stu << endl;
+    stack->display();
     return 0;
 }

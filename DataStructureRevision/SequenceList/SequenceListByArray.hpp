@@ -8,7 +8,7 @@
 
 #ifndef SequenceListByArray_hpp
 #define SequenceListByArray_hpp
-#include <stdlib.h>
+#include <iostream>
 
 template <typename T>
 class SequenceListByArray
@@ -19,6 +19,12 @@ class SequenceListByArray
 public:
     /** 初始化 */
     SequenceListByArray();
+    
+    /**
+     @brief 打印顺序表
+     @discussion 打印顺序表。需要对类T重载<<算符
+     */
+    void display();
     
     /**
      插入
@@ -59,6 +65,21 @@ template <typename T>
 SequenceListByArray<T>::SequenceListByArray()
 {
     this->count = 0;
+}
+
+template <typename T>
+void SequenceListByArray<T>::display()
+{
+    if (this->count == 0)
+        std::cout << "NULL" << std::endl;
+    else
+    {
+        for (int i = 0; i < this->count - 1; i++)
+        {
+            std::cout << this->sequenceList[i] << ", ";
+        }
+        std::cout << this->sequenceList[this->count] << std::endl;
+    }
 }
 
 template <typename T>
