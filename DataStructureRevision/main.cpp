@@ -16,21 +16,14 @@
 #include "Stack/Stack.hpp"
 #include "Queue/Queue.hpp"
 #include "Queue/CircularQueue.hpp"
+#include "String/String.hpp"
 using namespace std;
 
 int main()
 {
-    Queue<Student>* queue = new Queue<Student>;
-    queue->display();
-    Student *stu1 = new Student("zhangshu", "571", 123);
-    queue->enQueue(*stu1);
-    queue->display();
-    Student *stu2 = new Student("zs", "570", 212);
-    queue->enQueue(*stu2);
-    queue->display();
-    Student *stu3 = new Student();
-    queue->deQueue(*stu3);
-    cout << *stu3 << endl;
-    queue->display();
+    char str[1000] = "abdstfhgjkhgfdhjgfdjhvbcfghjgvcghjgvgugvjkbknbmbvgfdsrdtfyuababac";
+    char substr[100] = "ababac";
+    int i = String::kmpMatch(str, 65, substr, 6);
+    cout << i;
     return 0;
 }

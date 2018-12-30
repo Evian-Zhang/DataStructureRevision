@@ -27,6 +27,7 @@
 		567AF1B721D72DCA00F35506 /* UniLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UniLinkedList.hpp; sourceTree = "<group>"; };
 		567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BiLinkedList.hpp; sourceTree = "<group>"; };
 		56B0B2A621D7811E00B3A950 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
+		56B642F021D8775D0069F227 /* String.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
 		56C5AB1521D67C0F003B429A /* DataStructureRevision */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataStructureRevision; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C5AB1821D67C0F003B429A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		56C5AB1F21D67C70003B429A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -66,6 +67,14 @@
 			path = Stack;
 			sourceTree = "<group>";
 		};
+		56B642EE21D877180069F227 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				56B642F021D8775D0069F227 /* String.hpp */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
 		56C5AB0C21D67C0F003B429A = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +99,7 @@
 				567AF1B321D72D9800F35506 /* LinkedList */,
 				56B0B2A421D780CD00B3A950 /* Stack */,
 				56E64EBC21D79B5B0000D175 /* Queue */,
+				56B642EE21D877180069F227 /* String */,
 				56C5AB3C21D69752003B429A /* Test */,
 				56C5AB1821D67C0F003B429A /* main.cpp */,
 			);
