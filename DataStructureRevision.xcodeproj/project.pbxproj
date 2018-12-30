@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5605FDB121D8D36400E58080 /* BinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryTree.hpp; sourceTree = "<group>"; };
 		567AF1B721D72DCA00F35506 /* UniLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UniLinkedList.hpp; sourceTree = "<group>"; };
 		567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BiLinkedList.hpp; sourceTree = "<group>"; };
 		56B0B2A621D7811E00B3A950 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
@@ -51,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5605FDAF21D8D34700E58080 /* Tree */ = {
+			isa = PBXGroup;
+			children = (
+				5605FDB121D8D36400E58080 /* BinaryTree.hpp */,
+			);
+			path = Tree;
+			sourceTree = "<group>";
+		};
 		567AF1B321D72D9800F35506 /* LinkedList */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +119,7 @@
 				56E64EBC21D79B5B0000D175 /* Queue */,
 				56B642EE21D877180069F227 /* String */,
 				56B642F221D88DFA0069F227 /* SparseMatrix */,
+				5605FDAF21D8D34700E58080 /* Tree */,
 				56C5AB3C21D69752003B429A /* Test */,
 				56C5AB1821D67C0F003B429A /* main.cpp */,
 			);

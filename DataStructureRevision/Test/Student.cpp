@@ -20,6 +20,17 @@ Student::Student(char* name, char* id, short score)
     this->score = score;
 }
 
+bool Student::createStudent(Student &student)
+{
+    std::cout << "Input the name, id and score, or '@' to quit." << std::endl;
+    std::cin >> student.name;
+    if (!strcmp(student.name, "@"))
+        return false;
+    std::cin >> student.id;
+    std::cin >> student.score;
+    return true;
+}
+
 std::ostream& operator<<(std::ostream& output, const Student& student)
 {
     output << student.name;
