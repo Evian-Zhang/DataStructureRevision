@@ -17,13 +17,27 @@
 #include "Queue/Queue.hpp"
 #include "Queue/CircularQueue.hpp"
 #include "String/String.hpp"
+#include "SparseMatrix/SparseMatrix.hpp"
 using namespace std;
 
 int main()
 {
-    char str[1000] = "abdstfhgjkhgfdhjgfdjhvbcfghjgvcghjgvgugvjkbknbmbvgfdsrdtfyuababac";
-    char substr[100] = "ababac";
-    int i = String::kmpMatch(str, 65, substr, 6);
-    cout << i;
+    SparseMatrix<Student>* mat = new SparseMatrix<Student>(10, 10);
+    Student* stu1 = new Student("张曙", "571", 122);
+    Student* stu2 = new Student("zs", "572", 121);
+    Student* stu3 = new Student("zhangshu", "123", 213);
+    
+    mat->addElement(*stu1, 2, 2);
+    mat->addElement(*stu2, 2, 5);
+    mat->addElement(*stu3, 3, 4);
+    
+    mat->display();
+    cout << endl;
+    SparseMatrix<Student>* mat2 = mat->transpose();
+    mat2->display();
+    cout << endl;
+    mat2 = mat->fastTranspose();
+    mat2->display();
+    cout << endl;
     return 0;
 }
