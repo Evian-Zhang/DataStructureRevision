@@ -45,6 +45,9 @@ public:
      @param value 传出的队首值
      */
     bool getFront(T& value);
+    
+    /** 判断队列内是否有元素 */
+    bool isEmpty();
 };
 
 template <typename T>
@@ -107,6 +110,12 @@ template <typename T>
 bool Queue<T>::getFront(T &value)
 {
     return this->list.get(0, value);
+}
+
+template <typename T>
+bool Queue<T>::isEmpty()
+{
+    return this->count == 0;
 }
 
 #endif /* Queue_hpp */
