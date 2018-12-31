@@ -64,7 +64,7 @@ void Queue<T>::display()
     }
     else
     {
-        T* element = new T();
+        T* element = new T;
         this->list.get(0, *element);
         std::cout << "Front: " << *element << std::endl;
         this->list.get(this->count - 1, *element);
