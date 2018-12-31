@@ -24,6 +24,8 @@ public:
     
     static bool createStudent(Student& student);
     
+    static void display(Student student);
+    
     /** 比较两个对象的成绩是否相等，相等则返回true */
     static bool compare(Student student1, Student student2);
     

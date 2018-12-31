@@ -114,7 +114,7 @@ bool Stack<T>::getTop(T &value)
 template <typename T>
 bool Stack<T>::isEmpty()
 {
-    return this->count;
+    return this->count == 0;
 }
 
 #endif /* Stack_hpp */

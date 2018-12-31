@@ -31,6 +31,11 @@ bool Student::createStudent(Student &student)
     return true;
 }
 
+void Student::display(Student student)
+{
+    std::cout << "name: " << student.name << " id: " << student.id << " score: " << student.score << std::endl;
+}
+
 std::ostream& operator<<(std::ostream& output, const Student& student)
 {
     output << student.name;
