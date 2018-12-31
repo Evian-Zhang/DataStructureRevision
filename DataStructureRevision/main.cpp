@@ -19,6 +19,7 @@
 #include "String/String.hpp"
 #include "SparseMatrix/SparseMatrix.hpp"
 #include "Tree/BinaryTree.hpp"
+#include "Tree/ThreadedBinaryTree.hpp"
 using namespace std;
 
 int main()

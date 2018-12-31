@@ -30,8 +30,8 @@ class BinaryTree
     
     enum NodePosition
     {
-        LTree,
-        RTree
+        LTREE,
+        RTREE
     };
     
     /** display的辅助函数 */
@@ -132,10 +132,10 @@ void BinaryTree<T>::displayFromNode(BTreeNode *node, NodePosition nodePos, int i
     std::cout << "+---------";
     switch (nodePos)
     {
-        case LTree:
+        case LTREE:
             std::cout << "LT: ";
             break;
-        case RTree:
+        case RTREE:
             std::cout << "RT: ";
             break;
             
@@ -144,9 +144,9 @@ void BinaryTree<T>::displayFromNode(BTreeNode *node, NodePosition nodePos, int i
     }
     std::cout << node->value << std::endl;
     if (node->lchild != NULL)
-        this->displayFromNode(node->lchild, LTree, indent + 1);
+        this->displayFromNode(node->lchild, LTREE, indent + 1);
     if (node->rchild != NULL)
-        this->displayFromNode(node->rchild, RTree, indent + 1);
+        this->displayFromNode(node->rchild, RTREE, indent + 1);
 }
 
 template <typename T>
@@ -158,9 +158,9 @@ void BinaryTree<T>::display()
     {
         std::cout << "R: " << this->root->value << std::endl;
         if (this->root->lchild != NULL)
-            this->displayFromNode(this->root->lchild, LTree, 0);
+            this->displayFromNode(this->root->lchild, LTREE, 0);
         if (this->root->rchild != NULL)
-            this->displayFromNode(this->root->rchild, RTree, 0);
+            this->displayFromNode(this->root->rchild, RTREE, 0);
     }
 }
 

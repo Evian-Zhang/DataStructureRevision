@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ThreadedBinaryTree.hpp; sourceTree = "<group>"; };
 		5605FDB121D8D36400E58080 /* BinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryTree.hpp; sourceTree = "<group>"; };
 		567AF1B721D72DCA00F35506 /* UniLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UniLinkedList.hpp; sourceTree = "<group>"; };
 		567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BiLinkedList.hpp; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				5605FDB121D8D36400E58080 /* BinaryTree.hpp */,
+				5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */,
 			);
 			path = Tree;
 			sourceTree = "<group>";
