@@ -204,20 +204,25 @@ bool BiLinkedList<T>::removeByIndex(int index)
     {
         tmpNode = tmpNode->nextNode;
     }
-    if (index != 0 && index != this->count - 1)
+    if (tmpNode->preNode != NULL && tmpNode->nextNode != NULL)
     {
         tmpNode->preNode->nextNode = tmpNode->nextNode;
         tmpNode->nextNode->preNode = tmpNode->preNode;
     }
-    if (index == 0)
+    else if (tmpNode->preNode == NULL && tmpNode->nextNode != NULL)
     {
         this->head = tmpNode->nextNode;
         this->head->preNode = NULL;
     }
-    if (index == this->count - 1)
+    else if (tmpNode->preNode != NULL && tmpNode->nextNode == NULL)
     {
         this->tail = tmpNode->preNode;
         this->tail->nextNode = NULL;
+    }
+    else
+    {
+        this->head = NULL;
+        this->tail = NULL;
     }
     delete tmpNode;
     this->count--;

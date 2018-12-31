@@ -100,6 +100,7 @@ bool Queue<T>::deQueue(T &value)
     bool isSuccess = this->list.get(0, value);
     if (isSuccess)
     {
+        this->list.removeByIndex(0);
         this->count--;
         return true;
     }

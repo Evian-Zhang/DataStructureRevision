@@ -26,17 +26,7 @@ int main()
     BinaryTree<Student>* btree = new BinaryTree<Student>;
     btree->preOrderCreateTree(Student::createStudent);
     btree->display();
-    cout << "\n\n\n\npreOrderTraverse: "<< endl;
-    btree->preOrderTraverse(Student::display);
-    cout << "\n\n\n\npreOrderTraverseWithStack: "<< endl;
-    btree->preOrderTraverseWithStack(Student::display);
-    cout << "\n\n\n\ninOrderTraverse: "<< endl;
-    btree->inOrderTraverse(Student::display);
-    cout << "\n\n\n\ninOrderTraverseWithStack: "<< endl;
-    btree->inOrderTraverseWithStack(Student::display);
-    cout << "\n\n\n\npostOrderTraverse: "<< endl;
-    btree->postOrderTraverse(Student::display);
-    cout << "\n\n\n\npostOrderTraverseWithStack: "<< endl;
-    btree->postOrderTraverseWithStack(Student::display);
+    cout << "\n\n\n\nBFSTraverse: "<< endl;
+    btree->BFSTraverse(Student::display);
     return 0;
 }
