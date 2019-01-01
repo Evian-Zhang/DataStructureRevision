@@ -187,6 +187,7 @@ void BinaryTree<T>::preOrderCreateTreeFromNode(BTreeNode*& node, bool (*createNo
         node->value = value;
         node->lchild = NULL;
         node->rchild = NULL;
+        this->count++;
         preOrderCreateTreeFromNode(node->lchild, createNode);
         preOrderCreateTreeFromNode(node->rchild, createNode);
     }

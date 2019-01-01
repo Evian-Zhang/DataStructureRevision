@@ -24,10 +24,16 @@ using namespace std;
 
 int main()
 {
-    BinaryTree<Student>* btree = new BinaryTree<Student>;
-    btree->preOrderCreateTree(Student::createStudent);
-    btree->display();
-    cout << "\n\n\n\nBFSTraverse: "<< endl;
-    btree->BFSTraverse(Student::display);
+    ThreadedBinaryTree<Student> *tree = new ThreadedBinaryTree<Student>();
+    tree->preOrderCreateTree(Student::createStudent);
+    
+    tree->display();
+    tree->preOrderTraverse(Student::display);
+    tree->display();
+    tree->inOrderTraverse(Student::display);
+    tree->display();
+    tree->postOrderTraverse(Student::display);
+    tree->display();
+    delete tree;
     return 0;
 }
