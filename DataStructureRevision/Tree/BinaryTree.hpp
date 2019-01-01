@@ -49,6 +49,9 @@ class BinaryTree
     /** postOrderTraverse的辅助函数 */
     void postOrderTraverseFromNode(BTreeNode *node, void (*visit)(T));
     
+    /** 析构函数的辅助函数 */
+    void postOrderTraverseToDeleteNode(BTreeNode *node);
+    
 public:
     /** 初始化 */
     BinaryTree();
@@ -119,9 +122,19 @@ BinaryTree<T>::BinaryTree()
 }
 
 template <typename T>
+void BinaryTree<T>::postOrderTraverseToDeleteNode(BTreeNode *node)
+{
+    if (node->lchild != NULL)
+        this->postOrderTraverseToDeleteNode(node->lchild);
+    if (node->rchild != NULL)
+        this->postOrderTraverseToDeleteNode(node->rchild);
+    delete node;
+}
+
+template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
-    this->postOrderTraverse([](T node){delete node;});
+    this->postOrderTraverseToDeleteNode(this->root);
 }
 
 template <typename T>
