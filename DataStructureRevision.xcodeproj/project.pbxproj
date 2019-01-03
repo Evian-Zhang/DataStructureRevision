@@ -26,6 +26,8 @@
 /* Begin PBXFileReference section */
 		5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ThreadedBinaryTree.hpp; sourceTree = "<group>"; };
 		5605FDB121D8D36400E58080 /* BinaryTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryTree.hpp; sourceTree = "<group>"; };
+		567A95D121DB5ED900251E88 /* GraphByAdjMat.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphByAdjMat.hpp; sourceTree = "<group>"; };
+		567A95D421DB5EE300251E88 /* GraphByAdjList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphByAdjList.hpp; sourceTree = "<group>"; };
 		567AF1B721D72DCA00F35506 /* UniLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UniLinkedList.hpp; sourceTree = "<group>"; };
 		567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BiLinkedList.hpp; sourceTree = "<group>"; };
 		56B0B2A621D7811E00B3A950 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
@@ -60,6 +62,15 @@
 				5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		567A95CF21DB5D5C00251E88 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				567A95D121DB5ED900251E88 /* GraphByAdjMat.hpp */,
+				567A95D421DB5EE300251E88 /* GraphByAdjList.hpp */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 		567AF1B321D72D9800F35506 /* LinkedList */ = {
@@ -122,6 +133,7 @@
 				56B642EE21D877180069F227 /* String */,
 				56B642F221D88DFA0069F227 /* SparseMatrix */,
 				5605FDAF21D8D34700E58080 /* Tree */,
+				567A95CF21DB5D5C00251E88 /* Graph */,
 				56C5AB3C21D69752003B429A /* Test */,
 				56C5AB1821D67C0F003B429A /* main.cpp */,
 			);

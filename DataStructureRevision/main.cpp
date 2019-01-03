@@ -20,20 +20,25 @@
 #include "SparseMatrix/SparseMatrix.hpp"
 #include "Tree/BinaryTree.hpp"
 #include "Tree/ThreadedBinaryTree.hpp"
+#include "Graph/GraphByAdjMat.hpp"
+#include "GraphByAdjList.hpp"
 using namespace std;
 
 int main()
 {
-    ThreadedBinaryTree<Student> *tree = new ThreadedBinaryTree<Student>();
-    tree->preOrderCreateTree(Student::createStudent);
-    
-    tree->display();
-    tree->preOrderTraverse(Student::display);
-    tree->display();
-    tree->inOrderTraverse(Student::display);
-    tree->display();
-    tree->postOrderTraverse(Student::display);
-    tree->display();
-    delete tree;
+    GraphByAdjMat<Student> *graph = new GraphByAdjMat<Student>();
+    Student *stu1 = new Student("zhangshu", "57117213", 100);
+    Student *stu2 = new Student("zjd", "71117123", 100);
+    graph->addVertex(*stu1);
+    graph->addVertex(*stu2);
+    graph->addEdge(0, 1, 1);
+    graph->display();
+    GraphByAdjList<Student> *graph2 = new GraphByAdjList<Student>();
+    graph2->createFromAdjMat(graph);
+    graph2->display();
+    delete stu1;
+    delete stu2;
+    delete graph;
+    delete graph2;
     return 0;
 }
