@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "../LinkedList/BiLinkedList.hpp"
+#include "../Queue/Queue.hpp"
 #include "GraphByAdjMat.hpp"
 
 template <typename T>
@@ -24,7 +25,7 @@ class GraphByAdjList
     {
     public:
         /** 该边链接的节点，从0开始 */
-        int ajdVex;
+        int adjVex;
         int weight;
     };
     
@@ -45,6 +46,12 @@ class GraphByAdjList
     int vertexCount;
     int edgeCount;
     
+    /** DFSTraverse的辅助函数 */
+    void DFSTraverseFromNode(int vertexIndex, bool *visited, void (*visit)(T));
+    
+    /** BFSTraverse的辅助函数 */
+    void BFSTraverseFromNode(int vertexIndex, bool *visited, void (*visit)(T));
+    
 public:
     /** 初始化 */
     GraphByAdjList();
@@ -64,6 +71,12 @@ public:
      @param graph 以邻接表形式存储的图
      */
     void createFromAdjMat(GraphByAdjMat<T> *graph);
+    
+    /** 深度优先遍历 */
+    void DFSTraverse(void (*visit)(T));
+    
+    /** 广度优先遍历 */
+    void BFSTraverse(void (*visit)(T));
 };
 
 template <typename T>
@@ -96,15 +109,14 @@ void GraphByAdjList<T>::display()
             std::cout << node->value;
             int arcIndex = 0;
             int verIndex = 0;
-            ArcNode *arc = new ArcNode();
+            ArcNode *arc;
             while (node->arcs->get(arcIndex, arc))
             {
-                verIndex = arc->ajdVex;
+                verIndex = arc->adjVex;
                 std::cout << " -> " << *(this->adjList[verIndex]);
                 arcIndex++;
             }
             std::cout << std::endl;
-            delete arc;
         }
     }
 }
@@ -130,12 +142,73 @@ void GraphByAdjList<T>::createFromAdjMat(GraphByAdjMat<T> *graph)
             if (graph->edges[i][j] && j != i)
             {
                 ArcNode *addedArc = new ArcNode();
-                addedArc->ajdVex = j;
+                addedArc->adjVex = j;
                 addedArc->weight = graph->edges[i][j];
                 addedVertex->arcs->insertInTail(addedArc);
             }
         this->adjList[i] = addedVertex;
     }
+}
+
+template <typename T>
+void GraphByAdjList<T>::DFSTraverseFromNode(int vertexIndex, bool *visited, void (*visit)(T))
+{
+    visit(this->adjList[vertexIndex]->value);
+    visited[vertexIndex] = true;
+    int arcIndex = 0;
+    ArcNode *arc;
+    while (this->adjList[vertexIndex]->arcs->get(arcIndex, arc))
+    {
+        if (!visited[arc->adjVex])
+            this->DFSTraverseFromNode(arc->adjVex, visited, visit);
+        arcIndex++;
+    }
+}
+
+template <typename T>
+void GraphByAdjList<T>::DFSTraverse(void (*visit)(T))
+{
+    bool visited[this->vertexCount];
+    for (int i = 0; i < this->vertexCount; i++)
+        visited[i] = false;
+    for (int vertexIndex = 0; vertexIndex < this->vertexCount; vertexIndex++)
+        if (!visited[vertexIndex])
+            this->DFSTraverseFromNode(vertexIndex, visited, visit);
+}
+
+template <typename T>
+void GraphByAdjList<T>::BFSTraverseFromNode(int vertexIndex, bool *visited, void (*visit)(T))
+{
+    Queue<int> *queue = new Queue<int>();
+    int queueFront = vertexIndex;
+    queue->enQueue(queueFront);
+    while (!queue->isEmpty())
+    {
+        queue->deQueue(queueFront);
+        if (visited[queueFront])
+            continue;
+        visit(this->adjList[queueFront]->value);
+        visited[queueFront] = true;
+        int arcIndex = 0;
+        ArcNode *arc;
+        while (this->adjList[queueFront]->arcs->get(arcIndex, arc))
+        {
+            queue->enQueue(arc->adjVex);
+            arcIndex++;
+        }
+    }
+    delete queue;
+}
+
+template <typename T>
+void GraphByAdjList<T>::BFSTraverse(void (*visit)(T))
+{
+    bool visited[this->vertexCount];
+    for (int i = 0; i < this->vertexCount; i++)
+        visited[i] = false;
+    for (int vertexIndex = 0; vertexIndex < this->vertexCount; vertexIndex++)
+        if (!visited[vertexIndex])
+            this->BFSTraverseFromNode(vertexIndex, visited, visit);
 }
 
 #endif /* GraphByAdjList_hpp */
