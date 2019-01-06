@@ -17,6 +17,7 @@
 template <typename T>
 class BinaryTree
 {
+public:
     class BTreeNode
     {
     public:

@@ -30,6 +30,8 @@
 		567A95D421DB5EE300251E88 /* GraphByAdjList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphByAdjList.hpp; sourceTree = "<group>"; };
 		567AF1B721D72DCA00F35506 /* UniLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UniLinkedList.hpp; sourceTree = "<group>"; };
 		567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BiLinkedList.hpp; sourceTree = "<group>"; };
+		56871B9E21E1A77600E26DC9 /* Search.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Search.hpp; sourceTree = "<group>"; };
+		56871BA121E1AC2000E26DC9 /* BinarySearchTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinarySearchTree.hpp; sourceTree = "<group>"; };
 		56B0B2A621D7811E00B3A950 /* Stack.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
 		56B642F021D8775D0069F227 /* String.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = String.hpp; sourceTree = "<group>"; };
 		56B642F421D88E270069F227 /* SparseMatrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SparseMatrix.hpp; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				5605FDB121D8D36400E58080 /* BinaryTree.hpp */,
 				5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */,
+				56871BA121E1AC2000E26DC9 /* BinarySearchTree.hpp */,
 			);
 			path = Tree;
 			sourceTree = "<group>";
@@ -80,6 +83,14 @@
 				567AF1BA21D72DDB00F35506 /* BiLinkedList.hpp */,
 			);
 			path = LinkedList;
+			sourceTree = "<group>";
+		};
+		56871B9C21E1A76100E26DC9 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				56871B9E21E1A77600E26DC9 /* Search.hpp */,
+			);
+			path = Algorithm;
 			sourceTree = "<group>";
 		};
 		56B0B2A421D780CD00B3A950 /* Stack */ = {
@@ -134,6 +145,7 @@
 				56B642F221D88DFA0069F227 /* SparseMatrix */,
 				5605FDAF21D8D34700E58080 /* Tree */,
 				567A95CF21DB5D5C00251E88 /* Graph */,
+				56871B9C21E1A76100E26DC9 /* Algorithm */,
 				56C5AB3C21D69752003B429A /* Test */,
 				56C5AB1821D67C0F003B429A /* main.cpp */,
 			);
