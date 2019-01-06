@@ -135,7 +135,8 @@ void BinaryTree<T>::postOrderTraverseToDeleteNode(BTreeNode *node)
 template <typename T>
 BinaryTree<T>::~BinaryTree()
 {
-    this->postOrderTraverseToDeleteNode(this->root);
+    if (this->root != NULL)
+        this->postOrderTraverseToDeleteNode(this->root);
 }
 
 template <typename T>
