@@ -31,6 +31,15 @@ public:
     
     /** 重载赋值运算符 */
     Student& operator=(Student& student);
+    
+    /** 重载==运算符 */
+    bool operator==(Student student);
+    
+    /** 重载<运算符 */
+    bool operator<(Student student);
+    
+    /** 重载>运算符 */
+    bool operator>(Student student);
 };
 
 #endif /* Student_hpp */

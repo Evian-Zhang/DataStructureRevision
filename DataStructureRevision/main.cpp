@@ -20,8 +20,10 @@
 #include "SparseMatrix/SparseMatrix.hpp"
 #include "Tree/BinaryTree.hpp"
 #include "Tree/ThreadedBinaryTree.hpp"
+#include "Tree/BinarySearchTree.hpp"
 #include "Graph/GraphByAdjMat.hpp"
 #include "GraphByAdjList.hpp"
+#include "Algorithm/Search.hpp"
 using namespace std;
 
 int main()

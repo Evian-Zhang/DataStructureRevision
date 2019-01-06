@@ -54,3 +54,18 @@ Student& Student::operator=(Student& student)
     this->score = student.score;
     return student;
 }
+
+bool Student::operator==(Student student)
+{
+    return this->score == student.score;
+}
+
+bool Student::operator<(Student student)
+{
+    return this->score < student.score;
+}
+
+bool Student::operator>(Student student)
+{
+    return this->score > student.score;
+}
