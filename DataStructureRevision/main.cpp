@@ -28,16 +28,16 @@ using namespace std;
 
 int main()
 {
-    BinarySearchTree<Student> *tree = new BinarySearchTree<Student>();
     Student *stu1 = new Student("zs", "57117213", 100);
     Student *stu2 = new Student("hth", "1234", 90);
     Student *stu3 = new Student("hyy", "4321", 95);
     Student *stu4 = new Student("wlw", "3214", 60);
-    tree->addNode(*stu1);
-    tree->addNode(*stu2);
-    tree->addNode(*stu3);
-    tree->addNode(*stu4);
-    tree->display();
-    delete tree;
+    Student* array[4];
+    array[0] = stu1;
+    array[1] = stu2;
+    array[2] = stu3;
+    array[3] = stu4;
+    
+    cout << Search<Student*>::BSTreeSearch(array, 4, stu3);
     return 0;
 }
