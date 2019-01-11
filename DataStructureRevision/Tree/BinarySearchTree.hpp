@@ -19,7 +19,8 @@ public:
     
     
     /**
-     删除
+     @brief 删除
+     @discussion 删除节点。若该节点既有左子树也有右子树，则将其左子树中最大的节点替代此节点
 
      @param value 需对类T重载==及<
      @return 若无该节点，则返回false。否则返回true
