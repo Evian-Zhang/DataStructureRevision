@@ -136,6 +136,7 @@ bool BinarySearchTree<T>::removeNode(T value)
             preNodeToBeDeleted->rchild = NULL;
         delete nodeToBeDeleted;
     }
+    this->count--;
     return true;
 }
 

@@ -44,6 +44,7 @@
 		56C5AB3A21D6973F003B429A /* Student.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Student.hpp; sourceTree = "<group>"; };
 		56E64EBE21D79B7A0000D175 /* CircularQueue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CircularQueue.hpp; sourceTree = "<group>"; };
 		56E64EC121D7A8930000D175 /* Queue.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
+		56EC4ADD21E8352C007A0E2D /* AVLTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AVLTree.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 				5605FDB121D8D36400E58080 /* BinaryTree.hpp */,
 				5602036021D9D96600E8AE8D /* ThreadedBinaryTree.hpp */,
 				56871BA121E1AC2000E26DC9 /* BinarySearchTree.hpp */,
+				56EC4ADD21E8352C007A0E2D /* AVLTree.hpp */,
 			);
 			path = Tree;
 			sourceTree = "<group>";
