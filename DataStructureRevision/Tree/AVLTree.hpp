@@ -72,6 +72,13 @@ public:
     
     /** 删除节点 */
     void deleteNode(T value);
+    
+    /**
+     查找
+     
+     @return 指向该元素的指针。若失败则返回NULL
+     */
+    T* search(T value);
 };
 
 template <typename T>
@@ -275,6 +282,22 @@ template <typename T>
 void AVLTree<T>::deleteNode(T value)
 {
     this->deleteNodeFromNode(value, this->root);
+}
+
+template <typename T>
+T* AVLTree<T>::search(T value)
+{
+    typename AVLTree<T>::AVLTreeNode *node = this->root;
+    while (node != NULL)
+    {
+        if (value == node->value)
+            return &(node->value);
+        else if (value < node->value)
+            node = node->lchild;
+        else
+            node = node->rchild;
+    }
+    return NULL;
 }
 
 #endif /* AVLTree_hpp */

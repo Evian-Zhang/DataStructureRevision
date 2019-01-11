@@ -22,6 +22,7 @@
 #include "Tree/ThreadedBinaryTree.hpp"
 #include "Tree/BinarySearchTree.hpp"
 #include "Tree/AVLTree.hpp"
+#include "Tree/BTree.hpp"
 #include "Graph/GraphByAdjMat.hpp"
 #include "GraphByAdjList.hpp"
 #include "Algorithm/Search.hpp"
