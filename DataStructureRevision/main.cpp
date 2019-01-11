@@ -32,12 +32,15 @@ int main()
     Student *stu2 = new Student("hth", "1234", 90);
     Student *stu3 = new Student("hyy", "4321", 95);
     Student *stu4 = new Student("wlw", "3214", 60);
-    Student* array[4];
-    array[0] = stu1;
-    array[1] = stu2;
-    array[2] = stu3;
-    array[3] = stu4;
+    BinarySearchTree<Student> *tree = new BinarySearchTree<Student>();
     
-    cout << Search<Student*>::BSTreeSearch(array, 4, stu3);
+    tree->addNode(*stu1);
+    tree->addNode(*stu2);
+    tree->addNode(*stu3);
+    tree->addNode(*stu4);
+    tree->display();
+    
+    tree->removeNode(*stu4);
+    tree->display();
     return 0;
 }

@@ -57,14 +57,21 @@ template <typename T>
 bool BinarySearchTree<T>::removeNode(T value)
 {
     typename BinaryTree<T>::BTreeNode *nodeToBeDeleted = this->root;
+    typename BinaryTree<T>::BTreeNode *preNodeToBeDeleted = nodeToBeDeleted;
     while (nodeToBeDeleted != NULL)
     {
         if (value == nodeToBeDeleted->value)
             break;
         else if (value < nodeToBeDeleted->value)
+        {
+            preNodeToBeDeleted = nodeToBeDeleted;
             nodeToBeDeleted = nodeToBeDeleted->lchild;
+        }
         else
+        {
+            preNodeToBeDeleted = nodeToBeDeleted;
             nodeToBeDeleted = nodeToBeDeleted->rchild;
+        }
     }
     if (nodeToBeDeleted == NULL)
         return false;
@@ -84,7 +91,11 @@ bool BinarySearchTree<T>::removeNode(T value)
         
         nodeToBeDeleted->value = nodeToReplace->value;
         
-        if (nodeToReplace->lchild != NULL)
+        if (preNodeToReplace == NULL)
+        {
+            nodeToBeDeleted->lchild = nodeToReplace->lchild;
+        }
+        else if (nodeToReplace->lchild != NULL)
         {
             preNodeToReplace->rchild = nodeToReplace->lchild;
         }
@@ -96,20 +107,35 @@ bool BinarySearchTree<T>::removeNode(T value)
     }
     else if (nodeToBeDeleted->lchild != NULL)
     {
-        nodeToBeDeleted->value = nodeToBeDeleted->lchild->value;
-        nodeToBeDeleted->lchild = nodeToBeDeleted->lchild->lchild;
-        nodeToBeDeleted->rchild = nodeToBeDeleted->lchild->rchild;
+        if (nodeToBeDeleted == preNodeToBeDeleted)
+            this->root = nodeToBeDeleted->lchild;
+        else if (nodeToBeDeleted == preNodeToBeDeleted->lchild)
+            preNodeToBeDeleted->lchild = nodeToBeDeleted->lchild;
+        else
+            preNodeToBeDeleted->rchild = nodeToBeDeleted->lchild;
+        delete nodeToBeDeleted;
     }
     else if (nodeToBeDeleted->rchild != NULL)
     {
-        nodeToBeDeleted->value = nodeToBeDeleted->rchild->value;
-        nodeToBeDeleted->lchild = nodeToBeDeleted->rchild->lchild;
-        nodeToBeDeleted->rchild = nodeToBeDeleted->rchild->rchild;
+        if (nodeToBeDeleted == preNodeToBeDeleted)
+            this->root = nodeToBeDeleted->rchild;
+        else if (nodeToBeDeleted == preNodeToBeDeleted->lchild)
+            preNodeToBeDeleted->lchild = nodeToBeDeleted->rchild;
+        else
+            preNodeToBeDeleted->rchild = nodeToBeDeleted->rchild;
+        delete nodeToBeDeleted;
     }
     else
     {
-        nodeToBeDeleted = NULL;
+        if (nodeToBeDeleted == preNodeToBeDeleted)
+            this->root = NULL;
+        else if (nodeToBeDeleted == preNodeToBeDeleted->lchild)
+            preNodeToBeDeleted->lchild = NULL;
+        else
+            preNodeToBeDeleted->rchild = NULL;
+        delete nodeToBeDeleted;
     }
+    return true;
 }
 
 template <typename T>
