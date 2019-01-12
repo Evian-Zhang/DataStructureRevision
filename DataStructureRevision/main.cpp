@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include <stdlib.h>
+#include <cstring>
 
 #include "Test/Student.hpp"
 #include "SequenceList/SequenceListByArray.hpp"
@@ -23,30 +25,29 @@
 #include "Tree/BinarySearchTree.hpp"
 #include "Tree/AVLTree.hpp"
 #include "Tree/BTree.hpp"
-#include "Tree/B+Tree.hpp"
 #include "Graph/GraphByAdjMat.hpp"
 #include "GraphByAdjList.hpp"
 #include "Algorithm/Search.hpp"
+#include "Algorithm/Sort.hpp"
 using namespace std;
 
 int main()
 {
-    Student *stu1 = new Student("zs", "57117213", 100);
-    Student *stu2 = new Student("hth", "1234", 90);
-    Student *stu3 = new Student("hyy", "4321", 95);
-    Student *stu4 = new Student("wlw", "3214", 60);
-    Student *stu5 = new Student("lyx", "12343", 99);
-    BTree<Student> *tree = new BTree<Student>();
-    tree->display();
-    tree->addKey(*stu1);
-    tree->display();
-    tree->addKey(*stu2);
-    tree->display();
-    tree->addKey(*stu3);
-    tree->display();
-    tree->addKey(*stu4);
-    tree->display();
-    tree->addKey(*stu5);
-    tree->display();
+    const int M = 128;
+    Student array[M];
+    for (int i = 0; i < M; i++)
+    {
+        sprintf(array[i].name, "array[%d]", i);
+        array[i].score = rand() % M;
+        
+        cout << array[i] << "\t";
+    }
+    cout << "\n\n\n";
+    
+    Sort<Student>::twoWayInsertSort(array, M);
+    
+    for (int i = 0; i < M; i++)
+        cout << array[i] << "\t";
+    
     return 0;
 }
