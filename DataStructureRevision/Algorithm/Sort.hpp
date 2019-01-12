@@ -21,6 +21,11 @@ class Sort
     
     static void quickSortWithStartAndEnd(T *array, int start, int end);
     
+    /** 堆排序的辅助函数。已知array[s..m]中记录的关键字除array[s]之外均满足最大堆的定义 */
+    static void heapAdjust(T *array, int s, int m);
+    
+    static void heapCreate(T *array, int length);
+    
 public:
     /**
      @brief 插入排序
@@ -75,6 +80,15 @@ public:
      @param length array的长度
      */
     static void selectSort(T *array, int length);
+    
+    /**
+     @brief 堆排序
+     @discussion 堆排序，时间复杂度为O(nlogn), 不稳定排序
+     
+     @param array 待排序数组。需对类T重载<
+     @param length array的长度
+     */
+    static void heapSort(T *array, int length);
 };
 
 template <typename T>
@@ -230,6 +244,40 @@ void Sort<T>::selectSort(T *array, int length)
                 smallestIndex = j;
         }
         Sort<T>::swap(array[i], array[smallestIndex]);
+    }
+}
+
+template <typename T>
+void Sort<T>::heapAdjust(T *array, int s, int m)
+{
+    T tmp = array[s];
+    for (int i = 2 * s + 1; i <= m; i = 2 * i + 1)
+    {
+        if (i < m && array[i] < array[i + 1])
+            i++;
+        if (tmp > array[i])
+            break;
+        array[s] = array[i];
+        s = i;
+    }
+    array[s] = tmp;
+}
+
+template <typename T>
+void Sort<T>::heapCreate(T *array, int length)
+{
+    for (int i = (length - 2) / 2; i >= 0; i--)
+        Sort<T>::heapAdjust(array, i, length - 1);
+}
+
+template <typename T>
+void Sort<T>::heapSort(T *array, int length)
+{
+    Sort<T>::heapCreate(array, length);
+    for (int i = length - 1; i > 0; i--)
+    {
+        Sort<T>::swap(array[i], array[0]);
+        Sort<T>::heapAdjust(array, 0, i - 1);
     }
 }
 
