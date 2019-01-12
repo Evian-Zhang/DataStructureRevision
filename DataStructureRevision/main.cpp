@@ -44,7 +44,7 @@ int main()
     }
     cout << "\n\n\n";
     
-    Sort<Student>::heapSort(array, M);
+    Sort<Student>::mergeSort(array, M);
     
     for (int i = 0; i < M; i++)
         cout << array[i] << "\t";

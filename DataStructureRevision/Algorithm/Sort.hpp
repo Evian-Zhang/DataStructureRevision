@@ -26,6 +26,10 @@ class Sort
     
     static void heapCreate(T *array, int length);
     
+    /** 2-路归并排序的辅助函数。已知array[i..m]和array[m + 1..n]均有序。填入到有序的targetList[i..n] */
+    static void merge(T *array, T *targetArray, int i, int m, int n);
+    
+    static void mergeSortWithTmpArray(T *array, T *targetArray, int start, int end);
 public:
     /**
      @brief 插入排序
@@ -89,6 +93,15 @@ public:
      @param length array的长度
      */
     static void heapSort(T *array, int length);
+    
+    /**
+     @brief 归并排序
+     @discussion 归并排序，时间复杂度为O(nlogn), 稳定排序
+
+     @param array 待排序数组。需对类T重载<
+     @param length array的长度
+     */
+    static void mergeSort(T *array, int length);
 };
 
 template <typename T>
@@ -279,6 +292,63 @@ void Sort<T>::heapSort(T *array, int length)
         Sort<T>::swap(array[i], array[0]);
         Sort<T>::heapAdjust(array, 0, i - 1);
     }
+}
+
+template <typename T>
+void Sort<T>::merge(T *array, T* targetArray, int i, int m, int n)
+{
+    int j = m + 1;
+    int k = i;
+    while (i <= m && j <= n)
+    {
+        if (array[i] < array[j])
+        {
+            targetArray[k] = array[i];
+            i++;
+        }
+        else
+        {
+            targetArray[k] = array[j];
+            j++;
+        }
+        k++;
+    }
+    while (i <= m)
+    {
+        targetArray[k] = array[i];
+        i++;
+        k++;
+    }
+    while (j <= n)
+    {
+        targetArray[k] = array[j];
+        j++;
+        k++;
+    }
+}
+
+template <typename T>
+void Sort<T>::mergeSortWithTmpArray(T *array, T *targetArray, int start, int end)
+{
+    if (start == end)
+        targetArray[start] = array[end];
+    else
+    {
+        T tmpArray[end + 1];
+        int mid = (start + end) / 2;
+        Sort<T>::mergeSortWithTmpArray(array, tmpArray, start, mid);
+        Sort<T>::mergeSortWithTmpArray(array, tmpArray, mid + 1, end);
+        Sort<T>::merge(tmpArray, targetArray, start, mid, end);
+    }
+}
+
+template <typename T>
+void Sort<T>::mergeSort(T *array, int length)
+{
+    T tmpArray[length];
+    Sort<T>::mergeSortWithTmpArray(array, tmpArray, 0, length - 1);
+    for (int i = 0; i < length; i++)
+        array[i] = tmpArray[i];
 }
 
 #endif /* Sort_hpp */
