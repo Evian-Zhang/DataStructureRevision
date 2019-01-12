@@ -67,6 +67,13 @@ public:
      */
     static void quickSort(T *array, int length);
     
+    /**
+     @brief 选择排序
+     @discussion 选择排序，时间复杂度为O(n^2), 不稳定排序
+     
+     @param array 待排序数组。需对类T重载<
+     @param length array的长度
+     */
     static void selectSort(T *array, int length);
 };
 
