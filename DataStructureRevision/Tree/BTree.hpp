@@ -233,6 +233,7 @@ void BTree<T>::addKey(T value)
             }
         }
     }
+    this->count++;
     this->addKeyAtNode(value, node, NULL);
 }
 
