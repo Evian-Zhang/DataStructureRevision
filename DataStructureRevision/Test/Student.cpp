@@ -38,7 +38,7 @@ void Student::display(Student student)
 
 std::ostream& operator<<(std::ostream& output, const Student& student)
 {
-    output << student.name;
+    output << student.name << ": " << student.score;
     return output;
 }
 
