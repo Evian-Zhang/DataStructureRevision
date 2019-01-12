@@ -66,6 +66,8 @@ public:
      @param length array的长度
      */
     static void quickSort(T *array, int length);
+    
+    static void selectSort(T *array, int length);
 };
 
 template <typename T>
@@ -161,13 +163,9 @@ void Sort<T>::bubbleSort(T *array, int length)
     
     for (int i = 0; i < length; i++)
     {
-        int smallestIndex = i;
-        for (int j = i + 1; j < length; j++)
-        {
-            if (array[j] < array[smallestIndex])
-                smallestIndex = j;
-        }
-        Sort<T>::swap(array[i], array[smallestIndex]);
+        for (int j = 0; j < length - i - 1; j++)
+            if (array[j + 1] < array[j])
+                Sort<T>::swap(array[j], array[j + 1]);
     }
 }
 
@@ -208,6 +206,24 @@ template <typename T>
 void Sort<T>::quickSort(T *array, int length)
 {
     Sort<T>::quickSortWithStartAndEnd(array, 0, length - 1);
+}
+
+template <typename T>
+void Sort<T>::selectSort(T *array, int length)
+{
+    if (length < 2)
+        return;
+    
+    for (int i = 0; i < length; i++)
+    {
+        int smallestIndex = i;
+        for (int j = i + 1; j < length; j++)
+        {
+            if (array[j] < array[smallestIndex])
+                smallestIndex = j;
+        }
+        Sort<T>::swap(array[i], array[smallestIndex]);
+    }
 }
 
 #endif /* Sort_hpp */

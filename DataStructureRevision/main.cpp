@@ -44,7 +44,7 @@ int main()
     }
     cout << "\n\n\n";
     
-    Sort<Student>::quickSort(array, M);
+    Sort<Student>::bubbleSort(array, M);
     
     for (int i = 0; i < M; i++)
         cout << array[i] << "\t";
