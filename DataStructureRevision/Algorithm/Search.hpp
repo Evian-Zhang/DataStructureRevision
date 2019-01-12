@@ -11,6 +11,7 @@
 
 #include "../Tree/BinarySearchTree.hpp"
 #include "../Tree/AVLTree.hpp"
+#include "../Tree/BTree.hpp"
 
 template <typename T>
 class Search
@@ -58,6 +59,16 @@ public:
      @return key第一次出现时所在位置的下标；若不存在则返回-1
      */
     static int AVLTreeSearch(T *array, int length, T key);
+    
+    /**
+     @brief B树查找
+     @discussion B树查找，时间复杂度为O(logn)
+
+     @param length array的长度
+     @param key 关键字。需要对类T重载=, ==及<
+     @return key第一次出现时所在位置的下标；若不存在则返回-1
+     */
+    static int BTreeSearch(T *array, int length, T key);
 };
 
 template <typename T>
@@ -158,6 +169,50 @@ int Search<T>::AVLTreeSearch(T *array, int length, T key)
         node->value = array[i];
         node->index = i;
         tree->addNode(*node);
+    }
+    
+    NodeWithIndex *keyNode = new NodeWithIndex();
+    keyNode->value = key;
+    
+    NodeWithIndex *foundNode = tree->search(*keyNode);
+    
+    int index = -1;
+    
+    if (foundNode != NULL)
+        index = foundNode->index;
+    delete keyNode;
+    delete tree;
+    return index;
+}
+
+template <typename T>
+int Search<T>::BTreeSearch(T *array, int length, T key)
+{
+    class NodeWithIndex
+    {
+    public:
+        T value;
+        int index;
+        
+        bool operator==(NodeWithIndex node)
+        {
+            return this->value == node.value;
+        }
+        
+        bool operator<(NodeWithIndex node)
+        {
+            return this->value < node.value;
+        }
+    };
+    
+    BTree<NodeWithIndex> *tree = new BTree<NodeWithIndex>();
+    
+    for (int i = 0; i < length; i++)
+    {
+        NodeWithIndex *node = new NodeWithIndex();
+        node->value = array[i];
+        node->index = i;
+        tree->addKey(*node);
     }
     
     NodeWithIndex *keyNode = new NodeWithIndex();
