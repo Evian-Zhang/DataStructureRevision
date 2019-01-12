@@ -18,6 +18,9 @@ class Sort
         a = b;
         b = c;
     }
+    
+    static void quickSortWithStartAndEnd(T *array, int start, int end);
+    
 public:
     /**
      @brief 插入排序
@@ -54,6 +57,8 @@ public:
      @param length array的长度
      */
     static void bubbleSort(T *array, int length);
+    
+    static void quickSort(T *array, int length);
 };
 
 template <typename T>
@@ -157,6 +162,45 @@ void Sort<T>::bubbleSort(T *array, int length)
         }
         Sort<T>::swap(array[i], array[smallestIndex]);
     }
+}
+
+template <typename T>
+void Sort<T>::quickSortWithStartAndEnd(T *array, int start, int end)
+{
+    if (start >= end)
+        return;
+    int first = start;
+    int last = end;
+    T key = array[first];
+    
+    while (first < last)
+    {
+        while (last > first)
+        {
+            if (array[last] < key)
+                break;
+            last--;
+        }
+        array[first] = array[last];
+        
+        while (first < last)
+        {
+            if (key < array[first])
+                break;
+            first++;
+        }
+        array[last] = array[first];
+    }
+    
+    array[first] = key;
+    Sort<T>::quickSortWithStartAndEnd(array, start, first - 1);
+    Sort<T>::quickSortWithStartAndEnd(array, first + 1, end);
+}
+
+template <typename T>
+void Sort<T>::quickSort(T *array, int length)
+{
+    Sort<T>::quickSortWithStartAndEnd(array, 0, length - 1);
 }
 
 #endif /* Sort_hpp */
