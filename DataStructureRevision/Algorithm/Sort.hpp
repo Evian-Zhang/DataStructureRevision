@@ -45,6 +45,15 @@ public:
      @param length array的长度
      */
     static void twoWayInsertSort(T *array, int length);
+    
+    /**
+     @brief 冒泡排序
+     @discussion 冒泡排序，时间复杂度为O(n^2), 不稳定排序
+
+     @param array 待排序数组。需对类T重载<
+     @param length array的长度
+     */
+    static void bubbleSort(T *array, int length);
 };
 
 template <typename T>
@@ -55,12 +64,14 @@ void Sort<T>::insertSort(T *array, int length)
     
     for (int i = 1; i < length; i++)
     {
+        T tmp = array[i];
         int j = i;
-        while (j > 0 && array[j] < array[j - 1])
+        while (j > 0 && tmp < array[j - 1])
         {
-            Sort<T>::swap(array[j], array[j - 1]);
+            array[j] = array[j - 1];
             j--;
         }
+        array[j] = tmp;
     }
 }
 
@@ -114,19 +125,38 @@ void Sort<T>::twoWayInsertSort(T *array, int length)
         }
         else
         {
+            T tmp = array[i];
             rear = (rear + length + 1) % length;
-            tmpArray[rear] = array[i];
             int j = rear;
-            while (tmpArray[j] < tmpArray[(j + length - 1) % length])
+            while (tmp < tmpArray[(j + length - 1) % length])
             {
-                Sort<T>::swap(tmpArray[j], tmpArray[(j + length - 1) % length]);
+                tmpArray[j] = tmpArray[(j + length - 1) % length];
                 j = (j + length - 1) % length;
             }
+            tmpArray[j] = tmp;
         }
     }
     
     for (int i = 0; i < length; i++)
         array[i] = tmpArray[(front + i + length) % length];
+}
+
+template <typename T>
+void Sort<T>::bubbleSort(T *array, int length)
+{
+    if (length < 2)
+        return;
+    
+    for (int i = 0; i < length; i++)
+    {
+        int smallestIndex = i;
+        for (int j = i + 1; j < length; j++)
+        {
+            if (array[j] < array[smallestIndex])
+                smallestIndex = j;
+        }
+        Sort<T>::swap(array[i], array[smallestIndex]);
+    }
 }
 
 #endif /* Sort_hpp */
